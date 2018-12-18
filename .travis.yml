@@ -7,7 +7,11 @@ install: /bin/true
 notifications:
   email:
     - github-awsforjava@amazon.com
-script: mvn -q install
+script: mvn -q install -pl :sdk-core --am
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
+
 branches:
   only:
     - master
